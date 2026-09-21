@@ -10,7 +10,7 @@ const Router = {
     try{ await navigator.clipboard.writeText(text); }
     catch(e){ const t=document.createElement("textarea"); t.value=text; document.body.appendChild(t); t.select();
       try{ document.execCommand("copy"); }catch(_){} t.remove(); }
-    if(btn){ const old=btn.textContent; btn.textContent="Скопійовано ✓"; setTimeout(()=>btn.textContent=old,1500); }
+    if(btn){ const old=btn.textContent; btn.textContent=t("Скопійовано ✓","Copied ✓"); setTimeout(()=>btn.textContent=old,1500); }
   }
 };
 
@@ -23,6 +23,19 @@ const Router = {
     weapons:{render:viewWeapons, init:a=>viewWeapons.init(a), bind:()=>viewWeapons.bind()},
     method:{render:viewMethod}
   };
+  const NAV = {overview:["Огляд","Overview"], compare:["Порівняння сил","Force comparison"], countries:["Країни","Countries"],
+    duel:["Дуель","Duel"], weapons:["Моделі озброєння","Weapons"], method:["Методологія","Methodology"]};
+  function applyStatic(){
+    document.querySelectorAll("#tabs a").forEach(a=>{ const n = NAV[a.dataset.tab]; if(n) a.textContent = t(n[0], n[1]); });
+    document.getElementById("lang").textContent = L.lang==="en" ? "UA" : "EN";
+    document.getElementById("tabs").setAttribute("aria-label", t("Розділи","Sections"));
+    document.querySelector(".brand").setAttribute("aria-label", t("На головну","Home"));
+    document.getElementById("lang").setAttribute("aria-label", t("Перемкнути мову на англійську","Switch language to Ukrainian"));
+    document.getElementById("foot").textContent = t(
+      "Бюджети (SIPRI, НАТО, 2025) і ядерні арсенали (FAS, 2026) звірено з першоджерелами, решта показників — наближені оцінки (позначено «≈»). Це інформаційний довідник, а не офіційне джерело. Деталі — у розділі «Методологія».",
+      "Budgets (SIPRI, NATO, 2025) and nuclear arsenals (FAS, 2026) are checked against primary sources; all other figures are approximate estimates (marked “≈”). This is an information reference, not an official source. See “Methodology” for details.");
+    document.title = t("NATO vs BRICS — порівняння блоків", "NATO vs BRICS — bloc comparison");
+  }
   function go(){
     const parts = (location.hash||"#overview").slice(1).split("/").map(decodeURIComponent);
     const key = routes[parts[0]] ? parts[0] : "overview";
@@ -38,5 +51,12 @@ const Router = {
     if(focus) focus.scrollIntoView({block:"center"}); else window.scrollTo(0,0);
   }
   window.addEventListener("hashchange", go);
+  document.getElementById("lang").onclick = ()=>{
+    L.set(L.lang==="en" ? "uk" : "en");
+    if(viewWeapons.state) viewWeapons.state.type = "all";   // назви типів залежать від мови
+    applyStatic(); go();
+  };
+  L.init();
+  applyStatic();
   go();
 })();

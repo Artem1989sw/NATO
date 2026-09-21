@@ -31,6 +31,7 @@
       <a href="#duel" data-tab="duel">Дуель</a>
       <a href="#weapons" data-tab="weapons">Моделі озброєння</a>
       <a href="#method" data-tab="method">Методологія</a>
+      <button type="button" class="lang" id="lang" aria-label="Language / Мова">EN</button>
     </nav>
   </div>
 </header>
@@ -38,13 +39,11 @@
 <main class="wrap" id="view" tabindex="-1"></main>
 
 <footer class="foot">
-  <div class="wrap">
-    Бюджети (SIPRI, НАТО, 2025) і ядерні арсенали (FAS, 2026) звірено з першоджерелами, решта показників — наближені оцінки (позначено «≈»).
-    Це інформаційний довідник, а не офіційне джерело. Деталі — у розділі «Методологія».
-  </div>
+  <div class="wrap" id="foot"></div>
 </footer>
 
 <script src="js/data/core.js"></script>
+<script src="js/i18n.js"></script>
 <script src="js/data/blocs.js"></script>
 <script src="js/data/countries-nato.js"></script>
 <script src="js/data/countries-brics.js"></script>
@@ -52,6 +51,12 @@
 <script src="js/data/weapons-air.js"></script>
 <script src="js/data/weapons-missiles.js"></script>
 <script src="js/data/weapons-naval.js"></script>
+<script src="js/data/en/blocs.js"></script>
+<script src="js/data/en/countries.js"></script>
+<script src="js/data/en/weapons-armor.js"></script>
+<script src="js/data/en/weapons-air.js"></script>
+<script src="js/data/en/weapons-missiles.js"></script>
+<script src="js/data/en/weapons-naval.js"></script>
 <script src="js/ui.js"></script>
 <script src="js/view-overview.js"></script>
 <script src="js/view-compare.js"></script>

@@ -10,37 +10,39 @@ viewWeapons.init = function(args){
 
 function viewWeapons(){
   const s = wState();
-  const cats = [["armor","Бронетехніка"],["air","Авіація"],["missiles","ППО та ракети"],["naval","Флот"]];
+  const loc = L.lang==="en" ? "en" : "uk";
+  const cats = [["armor",t("Бронетехніка","Armour")],["air",t("Авіація","Aviation")],["missiles",t("ППО та ракети","Air defence & missiles")],["naval",t("Флот","Navy")]];
   const inCat = DATA.weapons.filter(w=>w.cat===s.cat);
-  const types = [...new Set(inCat.map(w=>w.type))].sort((a,b)=>a.localeCompare(b,"uk"));
+  const types = [...new Set(inCat.map(w=>D.weapon(w).type))].sort((a,b)=>a.localeCompare(b,loc));
   const q = s.q.toLowerCase();
-  const list = inCat.filter(w=>
-    (s.bloc==="all"||w.bloc===s.bloc) && (s.type==="all"||w.type===s.type) &&
-    (!q || (w.name+" "+w.type+" "+w.spec+" "+w.desc).toLowerCase().includes(q)));
+  const list = inCat.filter(w=>{
+    const d = D.weapon(w);
+    return (s.bloc==="all"||w.bloc===s.bloc) && (s.type==="all"||d.type===s.type) &&
+      (!q || (w.name+" "+d.name+" "+d.type+" "+d.spec+" "+d.desc).toLowerCase().includes(q));
+  });
 
   const cards = list.map(w=>{
-    const c = DATA.country(w.country);
+    const c = DATA.country(w.country), d = D.weapon(w);
     const slug = Router.slug(w.name);
     return `<article class="w ${UI.cls(w.bloc)}${s.focus===slug?" focus":""}" id="w-${UI.esc(slug)}">
-      <h3><a class="wl" href="#weapons/${w.cat}/${encodeURIComponent(slug)}" title="Посилання на цю модель">${UI.esc(w.name)}</a></h3>
-      <div class="meta">${UI.badge(w.bloc)}<span>${UI.esc(w.type)}</span><span>·</span><span>вир. ${c?UI.esc(c.name):UI.esc(w.country)}</span><span>·</span><span>${w.year} р.</span></div>
-      <div class="spec">${UI.esc(w.spec)}</div>
-      ${w.desc?`<p class="desc">${UI.esc(w.desc)}</p>`:""}
+      <h3><a class="wl" href="#weapons/${w.cat}/${encodeURIComponent(slug)}" title="${t("Посилання на цю модель","Link to this model")}">${UI.esc(d.name)}</a></h3>
+      <div class="meta">${UI.badge(w.bloc)}<span>${UI.esc(d.type)}</span><span>·</span><span>${t("вир.","made in")} ${c?UI.esc(D.cname(c)):UI.esc(w.country)}</span><span>·</span><span>${w.year}${t(" р.","")}</span></div>
+      <div class="spec">${UI.esc(d.spec)}</div>
+      ${d.desc?`<p class="desc">${UI.esc(d.desc)}</p>`:""}
     </article>`;
   }).join("");
 
-  const opts = [{v:"all",t:"Усі"},{v:"N",t:"НАТО",c:"n"},{v:"B",t:"БРІКС",c:"b"}];
   return `
-    <h1>Моделі озброєння</h1>
-    <p class="lead">Основні зразки техніки блоків з короткими ТТХ. Дані приблизні: у джерелах цифри розходяться, а точні параметри часто засекречені.</p>
+    <h1>${t("Моделі озброєння","Weapon models")}</h1>
+    <p class="lead">${t("Основні зразки техніки блоків з короткими ТТХ. Дані приблизні: у джерелах цифри розходяться, а точні параметри часто засекречені.","Main equipment of the two blocs with brief specifications. Figures are approximate: sources disagree and exact parameters are often classified.")}</p>
     <div class="subtabs" role="tablist">${cats.map(c=>`<button type="button" role="tab" data-cat="${c[0]}" class="${c[0]===s.cat?"on":""}">${c[1]}</button>`).join("")}</div>
     <div class="controls">
-      ${UI.seg("bloc",opts,s.bloc)}
-      <select id="type" aria-label="Тип"><option value="all">Усі типи</option>${types.map(t=>`<option ${t===s.type?"selected":""}>${UI.esc(t)}</option>`).join("")}</select>
-      <input type="search" id="q" placeholder="Пошук моделі…" value="${UI.esc(s.q)}" aria-label="Пошук моделі">
-      <span class="count">${list.length} із ${inCat.length}</span>
+      ${UI.seg("bloc",UI.blocOpts(),s.bloc)}
+      <select id="type" aria-label="${t("Тип","Type")}"><option value="all">${t("Усі типи","All types")}</option>${types.map(x=>`<option ${x===s.type?"selected":""}>${UI.esc(x)}</option>`).join("")}</select>
+      <input type="search" id="q" placeholder="${t("Пошук моделі…","Search model…")}" value="${UI.esc(s.q)}" aria-label="${t("Пошук моделі","Search model")}">
+      <span class="count">${list.length} ${t("із","of")} ${inCat.length}</span>
     </div>
-    ${list.length?`<div class="wgrid">${cards}</div>`:`<div class="empty">Нічого не знайдено за цими фільтрами.</div>`}`;
+    ${list.length?`<div class="wgrid">${cards}</div>`:`<div class="empty">${t("Нічого не знайдено за цими фільтрами.","Nothing found for these filters.")}</div>`}`;
 }
 
 viewWeapons.bind = function(){

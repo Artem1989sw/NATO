@@ -136,6 +136,8 @@ table.data tbody tr:hover td{background:var(--bg-2)}
 .w .spec{font-size:13px;color:var(--text);font-family:var(--mono);line-height:1.5}
 .w .desc{font-size:13px;color:var(--muted);margin:0}
 .count{color:var(--muted);font-size:13px}
+.tabs .lang{background:transparent;color:var(--text);border:1px solid var(--line);border-radius:8px;padding:6px 10px;font:700 13px var(--font);cursor:pointer;margin-left:6px;flex:none}
+.tabs .lang:hover{border-color:var(--muted)}
 .chips{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}
 .chip{background:var(--panel);color:var(--text);border:1px solid var(--line);border-radius:99px;padding:4px 12px;font:inherit;font-size:13px;cursor:pointer;text-decoration:none}
 .chip:hover{border-color:var(--muted)}
