@@ -1,6 +1,12 @@
 /* Вкладка «Країни»: таблиця з сортуванням і картка країни / порівняння двох країн. */
+function cState(){ return viewCountries.state || (viewCountries.state = {bloc:"all", q:"", sort:"budget", asc:false, sel:"US", cmp:""}); }
+viewCountries.init = function(args){
+  const s = cState();
+  if(args[0] && DATA.country(args[0])){ s.sel = args[0]; s.cmp = (args[1] && DATA.country(args[1])) ? args[1] : ""; }
+};
+
 function viewCountries(){
-  const s = viewCountries.state || (viewCountries.state = {bloc:"all", q:"", sort:"budget", asc:false, sel:"US", cmp:""});
+  const s = cState();
   const cols = [["budget","Бюджет $млрд"],["active","Армія тис."],["tanks","Танки"],["afv","БМП/БТР"],["arty","Артилерія"],["air","Літаки"],["heli","Гелікоптери"],["ships","Кораблі"],["subs","ПЧ"],["nukes","Ядерні бч"]];
   let list = DATA.countries.filter(c=>(s.bloc==="all"||c.bloc===s.bloc) && c.name.toLowerCase().includes(s.q.toLowerCase()));
   list.sort((a,b)=> (s.sort==="name" ? a.name.localeCompare(b.name,"uk") : (a[s.sort]-b[s.sort])) * (s.asc?1:-1));
@@ -25,7 +31,9 @@ function viewCountries(){
     <p class="hint">Гортайте таблицю вбік, щоб побачити всі показники →</p>
     <div class="scroll" style="max-height:520px;overflow:auto"><table class="data"><thead><tr>${head}</tr></thead><tbody>${rows}</tbody></table></div>
     <div class="detail" id="detail">${countryDetail(s)}</div>
-    <div class="controls"><span class="muted">Порівняти:</span>${picker("sel",s.sel)} <span class="muted">з</span> ${picker("cmp",s.cmp,"нічого")}</div>`;
+    <div class="controls"><span class="muted">Порівняти:</span>${picker("sel",s.sel)} <span class="muted">з</span> ${picker("cmp",s.cmp,"нічого")}
+      <button type="button" class="btn" id="copy">Копіювати посилання</button>
+      ${s.cmp?`<a class="btn" href="#duel/${s.sel}/${s.cmp}">Детальна дуель →</a>`:""}</div>`;
 }
 
 function countryDetail(s){
@@ -49,6 +57,8 @@ function countryDetail(s){
 
 viewCountries.bind = function(){
   const s = viewCountries.state, root = document.getElementById("view");
+  Router.sync(["countries", s.sel, s.cmp]);
+  document.getElementById("copy").onclick = e=>Router.copy(location.href, e.currentTarget);
   const rerender = (keepFocus)=>{ root.innerHTML = viewCountries(); viewCountries.bind();
     if(keepFocus){ const q = document.getElementById("q"); q.focus(); q.setSelectionRange(q.value.length,q.value.length); } };
   root.querySelectorAll("[data-seg=bloc] button").forEach(b=>b.onclick=()=>{ s.bloc=b.dataset.v; rerender(); });

@@ -1,6 +1,15 @@
 /* Вкладка «Моделі озброєння»: бронетехніка, авіація, ППО/ракети, флот — з ТТХ. */
+function wState(){ return viewWeapons.state || (viewWeapons.state = {cat:"armor", bloc:"all", type:"all", q:"", focus:""}); }
+viewWeapons.init = function(args){
+  const s = wState();
+  if(["armor","air","missiles","naval"].includes(args[0])){
+    s.cat = args[0]; s.focus = args[1] || "";
+    if(s.focus){ s.bloc="all"; s.type="all"; s.q=""; }
+  }
+};
+
 function viewWeapons(){
-  const s = viewWeapons.state || (viewWeapons.state = {cat:"armor", bloc:"all", type:"all", q:""});
+  const s = wState();
   const cats = [["armor","Бронетехніка"],["air","Авіація"],["missiles","ППО та ракети"],["naval","Флот"]];
   const inCat = DATA.weapons.filter(w=>w.cat===s.cat);
   const types = [...new Set(inCat.map(w=>w.type))].sort((a,b)=>a.localeCompare(b,"uk"));
@@ -11,8 +20,9 @@ function viewWeapons(){
 
   const cards = list.map(w=>{
     const c = DATA.country(w.country);
-    return `<article class="w ${UI.cls(w.bloc)}">
-      <h3>${UI.esc(w.name)}</h3>
+    const slug = Router.slug(w.name);
+    return `<article class="w ${UI.cls(w.bloc)}${s.focus===slug?" focus":""}" id="w-${UI.esc(slug)}">
+      <h3><a class="wl" href="#weapons/${w.cat}/${encodeURIComponent(slug)}" title="Посилання на цю модель">${UI.esc(w.name)}</a></h3>
       <div class="meta">${UI.badge(w.bloc)}<span>${UI.esc(w.type)}</span><span>·</span><span>вир. ${c?UI.esc(c.name):UI.esc(w.country)}</span><span>·</span><span>${w.year} р.</span></div>
       <div class="spec">${UI.esc(w.spec)}</div>
       ${w.desc?`<p class="desc">${UI.esc(w.desc)}</p>`:""}
@@ -35,7 +45,8 @@ function viewWeapons(){
 
 viewWeapons.bind = function(){
   const s = viewWeapons.state, root = document.getElementById("view");
-  const rerender = (keepFocus)=>{ root.innerHTML = viewWeapons(); viewWeapons.bind();
+  Router.sync(["weapons", s.cat, s.focus ? encodeURIComponent(s.focus) : ""]);
+  const rerender = (keepFocus)=>{ s.focus = ""; root.innerHTML = viewWeapons(); viewWeapons.bind();
     if(keepFocus){ const q = document.getElementById("q"); q.focus(); q.setSelectionRange(q.value.length,q.value.length); } };
   root.querySelectorAll("[data-cat]").forEach(b=>b.onclick=()=>{ s.cat=b.dataset.cat; s.type="all"; rerender(); });
   root.querySelectorAll("[data-seg=bloc] button").forEach(b=>b.onclick=()=>{ s.bloc=b.dataset.v; rerender(); });
