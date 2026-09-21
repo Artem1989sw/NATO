@@ -31,6 +31,14 @@ python -m http.server 8000
 - Країна: додайте рядок у `js/data/countries-nato.js` або `countries-brics.js` (порядок полів описано в `js/data/core.js`).
 - Модель озброєння: додайте кортеж у відповідний `js/data/weapons-*.js`.
 
+## Фото моделей
+
+1. Покладіть файл у `img/weapons/` з іменем зі списку `img/weapons/NAMES.txt` (напр. `m1a2-sepv3-abrams.jpg`).
+2. Додайте запис у `js/data/photos.js` з автором, ліцензією та посиланням на джерело (обов'язково для CC BY / CC BY-SA).
+3. Фото з'явиться у картці моделі, підпис автора — під ним. Якщо файлу немає, блок фото просто не показується.
+
+Підходять фото з Wikimedia Commons під CC BY / CC BY-SA / CC0 / public domain (зокрема знімки Міноборони США). Варіанти з «ND», «NC» чи «all rights reserved» не беріть.
+
 ## Публікація на GitHub Pages
 
 Settings → Pages → Source: *Deploy from a branch* → `main` / `(root)`.

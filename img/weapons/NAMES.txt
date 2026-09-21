@@ -1,0 +1,185 @@
+# Expected photo file names (without extension): <name>.jpg / .webp / .png
+# Format: file name | category | model
+
+## armor
+m1a2-sepv3-abrams | armor | M1A2 SEPv3 Abrams
+leopard-2a7-2a8 | armor | Leopard 2A7 / 2A8
+challenger-3 | armor | Challenger 3
+leclerc-xlr | armor | Leclerc XLR
+ariete-c1 | armor | Ariete C1
+k2pl-black-panther | armor | K2PL Black Panther
+leopard-2a6-2a4 | armor | Leopard 2A6 / 2A4
+t-90m-proryv-3 | armor | T-90M "Proryv-3"
+t-14-armata | armor | T-14 Armata
+t-72b3-b3m | armor | T-72B3 / B3M
+type-99a-ztz-99a | armor | Type 99A (ZTZ-99A)
+type-96b-ztz-96b | armor | Type 96B (ZTZ-96B)
+type-15-ztq-15 | armor | Type 15 (ZTQ-15)
+t-90s-bhishma | armor | T-90S "Bhishma"
+arjun-mk1a | armor | Arjun Mk1A
+karrar-zulfiqar-3 | armor | Karrar / Zulfiqar-3
+m1a1-abrams-egypt | armor | M1A1 Abrams (Egypt)
+leclerc-uae | armor | Leclerc (UAE)
+leopard-2ri | armor | Leopard 2RI
+m2a3-bradley | armor | M2A3 Bradley
+cv90-mk-iii-iv | armor | CV90 (Mk III/IV)
+puma | armor | Puma
+lynx-kf41 | armor | Lynx KF41
+boxer | armor | Boxer
+stryker | armor | Stryker
+ajax-ascod-2 | armor | Ajax (ASCOD 2)
+vbci | armor | VBCI
+bmp-3 | armor | BMP-3
+bmp-2 | armor | BMP-2
+btr-82a | armor | BTR-82A
+zbd-04a | armor | ZBD-04A
+zbl-08-vn1 | armor | ZBL-08 / VN1
+guarani-vbtp-mr | armor | Guarani VBTP-MR
+ratel-badger | armor | Ratel / Badger
+casspir | armor | Casspir
+m109a7-paladin | armor | M109A7 Paladin
+pzh-2000 | armor | PzH 2000
+caesar | armor | CAESAR
+k9-thunder-krab | armor | K9 Thunder (Krab)
+archer | armor | Archer
+m142-himars | armor | M142 HIMARS
+m270-mlrs | armor | M270 MLRS
+2s19-msta-s | armor | 2S19 Msta-S
+2s35-koalitsiya-sv | armor | 2S35 Koalitsiya-SV
+tos-1a-solntsepyok | armor | TOS-1A Solntsepyok
+bm-30-smerch | armor | BM-30 Smerch
+phl-16-pcl-181 | armor | PHL-16 / PCL-181
+k9-vajra-t | armor | K9 Vajra-T
+pinaka | armor | Pinaka
+astros-ii | armor | ASTROS II
+g6-rhino | armor | G6 Rhino
+
+## air
+f-35a-b-c-lightning-ii | air | F-35A/B/C Lightning II
+f-22-raptor | air | F-22 Raptor
+f-15ex-eagle-ii | air | F-15EX Eagle II
+f-16c-d-block-70-viper | air | F-16C/D Block 70 (Viper)
+f-a-18e-f-super-hornet | air | F/A-18E/F Super Hornet
+eurofighter-typhoon | air | Eurofighter Typhoon
+dassault-rafale-f4 | air | Dassault Rafale F4
+jas-39e-gripen | air | JAS 39E Gripen
+su-57-felon | air | Su-57 (Felon)
+su-35s | air | Su-35S
+su-34 | air | Su-34
+su-30mki | air | Su-30MKI
+mig-31k | air | MiG-31K
+j-20-weilong | air | J-20 (Weilong)
+j-35a | air | J-35A
+j-16 | air | J-16
+j-10c | air | J-10C
+tejas-mk1a | air | Tejas Mk1A
+gripen-e-brazil | air | Gripen E (Brazil)
+f-16c-d-egypt-uae-indonesia | air | F-16C/D (Egypt, UAE, Indonesia)
+mirage-2000-9-rafale-uae-egypt-india-indonesia | air | Mirage 2000-9 / Rafale (UAE, Egypt, India, Indonesia)
+mig-29-su-27-su-30-ethiopia-iran | air | MiG-29 / Su-27 / Su-30 (Ethiopia, Iran)
+b-2-spirit | air | B-2 Spirit
+b-21-raider | air | B-21 Raider
+b-52h-stratofortress | air | B-52H Stratofortress
+b-1b-lancer | air | B-1B Lancer
+tu-160m-white-swan | air | Tu-160M "White Swan"
+tu-95ms | air | Tu-95MS
+h-6k-n | air | H-6K/N
+ah-64e-apache-guardian | air | AH-64E Apache Guardian
+uh-60m-black-hawk | air | UH-60M Black Hawk
+ch-47f-chinook | air | CH-47F Chinook
+tiger-had-mk3 | air | Tiger HAD / Mk3
+nh90 | air | NH90
+mi-28nm-night-hunter | air | Mi-28NM "Night Hunter"
+ka-52-alligator | air | Ka-52 "Alligator"
+mi-8amtsh | air | Mi-8AMTSh
+z-10-z-20 | air | Z-10 / Z-20
+hal-prachand-lch | air | HAL Prachand LCH
+rooivalk | air | Rooivalk
+mq-9-reaper | air | MQ-9 Reaper
+rq-4-global-hawk-mq-4c-triton | air | RQ-4 Global Hawk / MQ-4C Triton
+bayraktar-tb2-akıncı | air | Bayraktar TB2 / Akıncı
+shahed-136-geran-2 | air | Shahed-136 / Geran-2
+wing-loong-ii-ch-5 | air | Wing Loong II / CH-5
+s-70-okhotnik | air | S-70 Okhotnik
+e-3-sentry-e-7-wedgetail | air | E-3 Sentry / E-7 Wedgetail
+a-50u-kj-500-kj-2000 | air | A-50U / KJ-500 / KJ-2000
+c-17-a400m | air | C-17 / A400M
+il-76md-90a-y-20-an-124 | air | Il-76MD-90A / Y-20 / An-124
+kc-46a-a330-mrtt | air | KC-46A / A330 MRTT
+
+## missiles
+mim-104-patriot-pac-3-mse | missiles | MIM-104 Patriot (PAC-3 MSE)
+thaad | missiles | THAAD
+samp-t-aster-30 | missiles | SAMP/T (Aster 30)
+iris-t-slm | missiles | IRIS-T SLM
+nasams | missiles | NASAMS
+aegis-ashore-sm-3-sm-6 | missiles | Aegis Ashore / SM-3 / SM-6
+s-400-triumf | missiles | S-400 Triumf
+s-500-prometheus | missiles | S-500 Prometheus
+pantsir-s1-s2 | missiles | Pantsir-S1/S2
+hq-9b-hq-22 | missiles | HQ-9B / HQ-22
+s-300pmu-2-bavar-373 | missiles | S-300PMU-2 / Bavar-373
+akash-mrsam-barak-8 | missiles | Akash / MRSAM (Barak-8)
+lgm-30g-minuteman-iii | missiles | LGM-30G Minuteman III
+trident-ii-d5 | missiles | Trident II D5
+m51-france | missiles | M51 (France)
+tomahawk-block-v | missiles | Tomahawk (Block V)
+jassm-er-agm-158 | missiles | JASSM-ER / AGM-158
+storm-shadow-scalp-eg | missiles | Storm Shadow / SCALP-EG
+prsm-atacms | missiles | PrSM / ATACMS
+taurus-kepd-350 | missiles | Taurus KEPD 350
+rs-28-sarmat | missiles | RS-28 Sarmat
+rs-24-yars | missiles | RS-24 Yars
+r-30-bulava | missiles | R-30 Bulava
+kh-47m2-kinzhal | missiles | Kh-47M2 Kinzhal
+3m22-zircon | missiles | 3M22 Zircon
+9k720-iskander-m | missiles | 9K720 Iskander-M
+kh-101-kh-555 | missiles | Kh-101 / Kh-555
+df-41 | missiles | DF-41
+df-21d-df-26 | missiles | DF-21D / DF-26
+df-17 | missiles | DF-17
+agni-v | missiles | Agni-V
+brahmos | missiles | BrahMos
+fateh-110-khorramshahr-sejjil | missiles | Fateh-110 / Khorramshahr / Sejjil
+shahab-3-emad | missiles | Shahab-3 / Emad
+
+## naval
+uss-gerald-r-ford-cvn-78 | naval | USS Gerald R. Ford (CVN-78)
+nimitz-cvn-68 | naval | Nimitz (CVN-68)
+arleigh-burke-flight-iii | naval | Arleigh Burke (Flight III)
+zumwalt | naval | Zumwalt
+virginia-class-ssn | naval | Virginia-class (SSN)
+columbia-class-ssbn | naval | Columbia-class (SSBN)
+queen-elizabeth-class | naval | Queen Elizabeth-class
+type-45-daring | naval | Type 45 Daring
+type-26-city-class | naval | Type 26 (City-class)
+charles-de-gaulle-r91 | naval | Charles de Gaulle (R91)
+fremm-fdi-belharra | naval | FREMM / FDI Belharra
+triomphant-class-ssbn | naval | Triomphant-class (SSBN)
+cavour-trieste | naval | Cavour / Trieste
+type-212cd | naval | Type 212CD
+gotland-södermanland | naval | Gotland / Södermanland
+type-003-fujian | naval | Type 003 "Fujian"
+type-002-shandong | naval | Type 002 "Shandong"
+type-055-renhai | naval | Type 055 (Renhai)
+type-052d-luyang-iii | naval | Type 052D (Luyang III)
+type-094-type-096-ssbn | naval | Type 094 / Type 096 (SSBN)
+type-093-095-ssn | naval | Type 093 / 095 (SSN)
+project-955a-borei-a | naval | Project 955A Borei-A
+project-885m-yasen-m | naval | Project 885M Yasen-M
+project-22350-admiral-gorshkov | naval | Project 22350 Admiral Gorshkov
+project-636-3-varshavyanka | naval | Project 636.3 Varshavyanka
+admiral-kuznetsov-project-1144 | naval | Admiral Kuznetsov / Project 1144
+ins-vikrant | naval | INS Vikrant
+ins-vikramaditya | naval | INS Vikramaditya
+kolkata-visakhapatnam | naval | Kolkata / Visakhapatnam
+ins-arihant-ssbn | naval | INS Arihant (SSBN)
+scorpène-kalvari | naval | Scorpène (Kalvari)
+riachuelo-scorpène | naval | Riachuelo (Scorpène)
+type-209-209pn-egypt-indonesia | naval | Type 209 / 209PN (Egypt, Indonesia)
+mistral-gamal-abdel-nasser | naval | Mistral (Gamal Abdel Nasser)
+valour-class-meko-a-200 | naval | Valour-class (MEKO A-200)
+alvand-moudge | naval | Alvand / Moudge
+kilo-class-iran | naval | Kilo-class (Iran)
+baynunah-falaj-uae | naval | Baynunah / Falaj (UAE)
+martadinata-sigma-indonesia | naval | Martadinata / Sigma (Indonesia)

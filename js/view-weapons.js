@@ -24,7 +24,10 @@ function viewWeapons(){
   const cards = list.map(w=>{
     const c = DATA.country(w.country), d = D.weapon(w);
     const slug = Router.slug(w.name);
-    return `<article class="w ${UI.cls(w.bloc)}${s.focus===slug?" focus":""}" id="w-${UI.esc(slug)}">
+    const ph = D.photo(w);
+    const photo = ph ? `<figure class="ph"><img src="img/weapons/${encodeURIComponent(ph.file)}" alt="${UI.esc(d.name)}" loading="lazy" onerror="this.closest('figure').remove()">
+        <figcaption>${t("Фото:","Photo:")} ${UI.esc(ph.author)} · ${ph.url?`<a href="${UI.esc(ph.url)}" target="_blank" rel="noopener">${UI.esc(ph.license)}</a>`:UI.esc(ph.license)}</figcaption></figure>` : "";
+    return `<article class="w ${UI.cls(w.bloc)}${s.focus===slug?" focus":""}" id="w-${UI.esc(slug)}">${photo}
       <h3><a class="wl" href="#weapons/${w.cat}/${encodeURIComponent(slug)}" title="${t("Посилання на цю модель","Link to this model")}">${UI.esc(d.name)}</a></h3>
       <div class="meta">${UI.badge(w.bloc)}<span>${UI.esc(d.type)}</span><span>·</span><span>${t("вир.","made in")} ${c?UI.esc(D.cname(c)):UI.esc(w.country)}</span><span>·</span><span>${w.year}${t(" р.","")}</span></div>
       <div class="spec">${UI.esc(d.spec)}</div>

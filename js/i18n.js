@@ -25,6 +25,11 @@ const D = {
   cname(c){ const e = DATA.en.countries[c.code]; return (L.lang==="en" && e) ? e[0] : c.name; },
   cnote(c){ const e = DATA.en.countries[c.code]; return (L.lang==="en" && e) ? e[1] : c.note; },
   metric(m){ return {label:t(m.label,m.en), unit:t(m.unit,m.unitEn), src:t(m.src,m.srcEn)}; },
+  /* Фото моделі (або null): ключ = слаг англійської назви, збігається з img/weapons/NAMES.txt */
+  photo(w){
+    const e = (DATA.en.weapons[w.cat]||[])[w.i];
+    return e ? (DATA.photos[Router.slug(e[0])] || null) : null;
+  },
   /* Модель озброєння: [name,type,spec,desc] англійською, якщо є */
   weapon(w){
     const e = (L.lang==="en") ? (DATA.en.weapons[w.cat]||[])[w.i] : null;
