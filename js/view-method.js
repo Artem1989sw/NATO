@@ -4,15 +4,20 @@ function viewMethod(){
     <h1>Методологія та обмеження</h1>
     <p class="lead">Що означають цифри на сайті і чому їм не варто довіряти буквально.</p>
     <div class="grid g2">
-      <div class="card"><h3>Джерела</h3>
+      <div class="card"><h3>Що звірено (✓)</h3>
         <ul style="margin:0;padding-left:18px">
-          <li>SIPRI — оборонні витрати, ядерні арсенали</li>
-          <li>IISS «The Military Balance» — склад збройних сил</li>
-          <li>FAS — оцінки ядерних боєголовок</li>
-          <li>Global Firepower — довідкові показники</li>
-          <li>Відкриті дані виробників і мінобороні країн</li>
+          <li><b>Оборонні бюджети, 2025</b> — <a href="https://www.sipri.org/publications/2026/sipri-fact-sheets/trends-world-military-expenditure-2025" target="_blank" rel="noopener">SIPRI, квітень 2026</a>. Для Китаю та Росії це оцінки SIPRI. Малі члени НАТО (Португалія, Угорщина, Болгарія, Словаччина, Хорватія, країни Балтії, Словенія, Албанія, Північна Македонія, Чорногорія, Люксембург) — за <a href="https://www.nato.int/content/dam/nato/webready/documents/finance/def-exp-2025-en.pdf" target="_blank" rel="noopener">звітом НАТО</a> (оцінка 2025, за методикою НАТО).</li>
+          <li><b>Ядерні боєголовки</b> — <a href="https://fas.org/initiative/status-world-nuclear-forces/" target="_blank" rel="noopener">FAS, початок 2026</a> (сумарний інвентар, з резервом).</li>
+          <li>Єгипет — SIPRI ≈2,5 млрд. Для ОАЕ та Ефіопії SIPRI даних не публікує, тому там оцінка.</li>
         </ul>
-        <p class="muted" style="margin-top:10px">Наведені значення округлено й узагальнено за станом на 2024–2025 рр.</p>
+        <p class="muted" style="margin-top:10px">Дата звірки: ${DATA.verifiedOn}.</p>
+      </div>
+      <div class="card"><h3>Що лишається оцінкою (≈)</h3>
+        <ul style="margin:0;padding-left:18px">
+          <li>Населення та ВВП — округлені оцінки.</li>
+          <li>Особовий склад, танки, бронетехніка, артилерія, літаки, гелікоптери, кораблі, підводні човни — за пам'яттю за IISS «The Military Balance» та Global Firepower, без звірки. Повні дані IISS платні.</li>
+          <li>Моделі озброєння та їхні ТТХ — довідкові значення з відкритих джерел, без побічної звірки.</li>
+        </ul>
       </div>
       <div class="card"><h3>Обмеження</h3>
         <ul style="margin:0;padding-left:18px">

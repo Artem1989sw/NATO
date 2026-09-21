@@ -17,7 +17,7 @@ function viewCompare(){
   const metric = k => DATA.metrics.find(m=>m.k===k);
   const body = groups.map(g=>`
     <h2>${g[0]}</h2>
-    <div class="duel">${g[1].map(k=>{const m=metric(k);return UI.duel(m.label,m.unit,sumOf("N",k),sumOf("B",k));}).join("")}</div>`).join("");
+    <div class="duel">${g[1].map(k=>{const m=metric(k);return UI.duel(m.label,m.unit,sumOf("N",k),sumOf("B",k),(m.ok?"✓ ":"≈ ")+m.src);}).join("")}</div>`).join("");
 
   const chk = (id,label,on)=>`<label style="display:inline-flex;gap:6px;align-items:center;cursor:pointer"><input type="checkbox" id="${id}" ${on?"checked":""}> ${label}</label>`;
   return `

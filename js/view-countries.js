@@ -22,6 +22,7 @@ function viewCountries(){
       <input type="search" id="q" placeholder="Пошук країни…" value="${UI.esc(s.q)}" aria-label="Пошук країни">
       <span class="count">${list.length} країн</span>
     </div>
+    <p class="hint">Гортайте таблицю вбік, щоб побачити всі показники →</p>
     <div class="scroll" style="max-height:520px;overflow:auto"><table class="data"><thead><tr>${head}</tr></thead><tbody>${rows}</tbody></table></div>
     <div class="detail" id="detail">${countryDetail(s)}</div>
     <div class="controls"><span class="muted">Порівняти:</span>${picker("sel",s.sel)} <span class="muted">з</span> ${picker("cmp",s.cmp,"нічого")}</div>`;
@@ -34,7 +35,7 @@ function countryDetail(s){
   const max = {}; keys.forEach(m=>{ max[m.k] = Math.max(...DATA.countries.map(c=>c[m.k]||0)) || 1; });
   const rowsFor = (c)=> keys.map(m=>{
     const w = Math.min(100, (c[m.k]||0)/max[m.k]*100);
-    return `<div class="stat-row"><span>${m.label}</span><span class="track"><i style="width:${w}%;background:var(--${c.bloc==="N"?"nato":"brics"})"></i></span><span class="v">${DATA.fmt(c[m.k])}</span></div>`;
+    return `<div class="stat-row"><span title="${UI.esc(m.src)}">${m.label} <span class="src ${m.ok?"ok":"est"}">${m.ok?"✓":"≈"}</span></span><span class="track"><i style="width:${w}%;background:var(--${c.bloc==="N"?"nato":"brics"})"></i></span><span class="v">${DATA.fmt(c[m.k])}</span></div>`;
   }).join("");
   const card = c => `<div class="card ${UI.cls(c.bloc)}">
       <h3>${UI.cc(c.code,c.bloc)}${UI.esc(c.name)} ${UI.badge(c.bloc)}</h3>
@@ -43,7 +44,7 @@ function countryDetail(s){
       <div class="stat-rows">${rowsFor(c)}</div>
     </div>`;
   return `<div class="grid ${b?"g2":""}">${card(a)}${b?card(b):""}</div>
-    <p class="muted" style="font-size:12px">Смуги нормовані до максимуму серед усіх 42 країн за кожним показником.</p>`;
+    <p class="muted" style="font-size:12px">Смуги нормовані до максимуму серед усіх 42 країн за кожним показником. <span class="src ok">✓</span> звірено з першоджерелом (${DATA.verifiedOn}), <span class="src est">≈</span> наближена оцінка. Наведіть курсор на назву показника, щоб побачити джерело.</p>`;
 }
 
 viewCountries.bind = function(){

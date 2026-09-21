@@ -15,6 +15,8 @@
     root.innerHTML = r.render();
     if(r.bind) r.bind();
     document.querySelectorAll("#tabs a").forEach(a=>a.classList.toggle("on", a.dataset.tab===active));
+    const on = document.querySelector("#tabs a.on");
+    if(on) document.getElementById("tabs").scrollLeft = on.offsetLeft - 16;
     window.scrollTo(0,0);
   }
   window.addEventListener("hashchange", go);
