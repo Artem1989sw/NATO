@@ -46,7 +46,7 @@ function countryDetail(s){
   const max = {}; keys.forEach(m=>{ max[m.k] = Math.max(...DATA.countries.map(c=>c[m.k]||0)) || 1; });
   const rowsFor = (c)=> keys.map(m=>{
     const w = Math.min(100, (c[m.k]||0)/max[m.k]*100), d = D.metric(m);
-    return `<div class="stat-row"><span title="${UI.esc(d.src)}">${d.label} <span class="src ${m.ok?"ok":"est"}">${m.ok?"✓":"≈"}</span></span><span class="track"><i style="width:${w}%;background:var(--${c.bloc==="N"?"nato":"brics"})"></i></span><span class="v">${DATA.fmt(c[m.k])}</span></div>`;
+    return `<div class="stat-row"><span title="${UI.esc(d.src)}">${d.label} <span class="src ${m.ok?"ok":"est"}">${m.ok?"✓":"≈"}</span></span><span class="track"><i style="width:${w}%;background:var(--${c.bloc==="N"?"nato":"brics"})"></i></span><span class="v">${DATA.fmtVal(m.k,c[m.k])}</span></div>`;
   }).join("");
   const card = c => `<div class="card ${UI.cls(c.bloc)}">
       <h3>${UI.cc(c.code,c.bloc)}${UI.esc(D.cname(c))} ${UI.badge(c.bloc)}</h3>

@@ -63,6 +63,7 @@ main{padding-top:28px;padding-bottom:48px;outline:none}
 .card.nato{border-top:3px solid var(--nato)}
 .card.brics{border-top:3px solid var(--brics)}
 .kpi{font-size:28px;font-weight:800;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+.kpi.kpi-s{font-size:22px}
 .kpi small{font-size:13px;font-weight:500;color:var(--muted);margin-left:4px}
 .label{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:600}
 .c-nato{color:var(--nato)}.c-brics{color:var(--brics)}
@@ -119,11 +120,11 @@ table.data tbody tr:hover td{background:var(--bg-2)}
 /* country detail */
 .detail{margin-top:18px}
 .stat-rows{display:grid;gap:8px;margin-top:12px}
-.stat-row{display:grid;grid-template-columns:150px 1fr 90px;gap:10px;align-items:center;font-size:14px}
+.stat-row{display:grid;grid-template-columns:150px 1fr 118px;gap:10px;align-items:center;font-size:14px}
 .stat-row .track{height:9px;background:var(--bg-2);border-radius:99px;overflow:hidden}
 .stat-row .track i{display:block;height:100%}
 .stat-row .v{text-align:right;font-variant-numeric:tabular-nums;font-weight:700}
-@media(max-width:560px){.stat-row{grid-template-columns:110px 1fr 70px}}
+@media(max-width:560px){.stat-row{grid-template-columns:100px 1fr 96px}}
 
 /* weapons */
 .wgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:12px}

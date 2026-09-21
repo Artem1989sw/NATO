@@ -5,16 +5,20 @@ const UI = {
   badge(b){ return `<span class="pill ${UI.cls(b)}">${D.bloc(b)}</span>`; },
   cc(code,b){ return `<span class="cc ${UI.cls(b)}">${UI.esc(code)}</span>`; },
   /* Двобічна смуга: частка НАТО проти БРІКС. */
-  duel(label, unit, n, b, note){
+  /* f — форматер значення; hideUnit — масштаб уже у числі («$30,3 трлн»), окрема одиниця не потрібна */
+  duel(label, unit, n, b, note, f, hideUnit){
+    f = f || DATA.fmt;
     const tot = n + b;
     const pn = tot ? (n/tot*100) : 50;
     const pb = 100 - pn;
     const nm = D.bloc("N"), bm = D.bloc("B");
+    const hi = Math.max(n,b), lo = Math.min(n,b);
+    const ratio = (lo>0 && hi/lo>=1.1) ? `${hi===n?nm:bm} ${t("більше у","is")} ${(hi/lo>=10?Math.round(hi/lo):Math.round(hi/lo*10)/10).toLocaleString(L.lang==="en"?"en-US":"uk-UA")}×${L.lang==="en"?" larger":""}` : "";
     return `<div class="duel-row">
-      <div class="duel-head"><b>${UI.esc(label)}</b><span class="muted">${UI.esc(unit)}</span></div>
-      <div class="duel-vals"><span class="c-nato">${DATA.fmt(n)}</span><span class="c-brics">${DATA.fmt(b)}</span></div>
-      <div class="bar2" role="img" aria-label="${nm} ${DATA.fmt(n)}, ${bm} ${DATA.fmt(b)}"><i class="n" style="width:${pn}%"></i><i class="b" style="width:${pb}%"></i></div>
-      <div class="duel-sub">${nm} ${pn.toFixed(0)}% · ${bm} ${pb.toFixed(0)}%${note?" · "+UI.esc(note):""}</div>
+      <div class="duel-head"><b>${UI.esc(label)}</b><span class="muted">${hideUnit?"":UI.esc(unit)}</span></div>
+      <div class="duel-vals"><span class="c-nato">${f(n)}</span><span class="c-brics">${f(b)}</span></div>
+      <div class="bar2" role="img" aria-label="${nm} ${f(n)}, ${bm} ${f(b)}"><i class="n" style="width:${pn}%"></i><i class="b" style="width:${pb}%"></i></div>
+      <div class="duel-sub">${nm} ${pn.toFixed(0)}% · ${bm} ${pb.toFixed(0)}%${ratio?" · "+ratio:""}${note?" · "+UI.esc(note):""}</div>
     </div>`;
   },
   seg(name, opts, current){

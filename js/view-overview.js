@@ -4,11 +4,12 @@ function viewOverview(){
   const N = DATA.blocs.N, B = DATA.blocs.B;
   const eN = DATA.en.blocs.N, eB = DATA.en.blocs.B;
   const nC = DATA.byBloc("N").length, bC = DATA.byBloc("B").length;
-  const kpi = (label, key, unit, div=1) => {
-    const n = DATA.sum("N",key)/div, b = DATA.sum("B",key)/div;
+  /* Показники зі шкалою (гроші, люди) виводимо словами: «$30,3 трлн», решта — числом + одиниця. */
+  const kpi = (label, key, unit) => {
+    const n = DATA.sum("N",key), b = DATA.sum("B",key), scaled = !!DATA.kind[key];
     return `<div class="card"><div class="label">${label}</div>
-      <div class="kpi"><span class="c-nato">${DATA.fmt(n)}</span> <small>vs</small> <span class="c-brics">${DATA.fmt(b)}</span></div>
-      <div class="muted" style="font-size:12px">${unit}</div></div>`;
+      <div class="kpi kpi-s"><span class="c-nato">${DATA.fmtVal(key,n)}</span> <small>vs</small> <span class="c-brics">${DATA.fmtVal(key,b)}</span></div>
+      <div class="muted" style="font-size:12px">${scaled?"":unit}</div></div>`;
   };
   const facts = en ? [eN.facts, eB.facts] : [N.facts, B.facts];
   const rows = facts[0].map((f,i)=>`<tr><td>${UI.esc(f[0])}</td><td class="n">${UI.esc(f[1])}</td><td class="b">${UI.esc(facts[1][i][1])}</td></tr>`).join("");
@@ -25,7 +26,7 @@ function viewOverview(){
       <div class="card nato"><div class="label">${D.bloc("N")}</div><div class="kpi">${nC}<small>${t("країн","countries")}</small></div><div class="muted" style="font-size:13px">${UI.esc(pick("N","full"))}</div></div>
       <div class="card brics"><div class="label">${D.bloc("B")}</div><div class="kpi">${bC}<small>${t("країн","countries")}</small></div><div class="muted" style="font-size:13px">${UI.esc(pick("B","full"))}</div></div>
       ${kpi(t("Населення","Population"),"pop",t("млн осіб","million people"))}
-      ${kpi(t("ВВП (номінальний)","GDP (nominal)"),"gdp",t("$ трлн","$ trillion"),1000)}
+      ${kpi(t("ВВП (номінальний)","GDP (nominal)"),"gdp","")}
       ${kpi(t("Оборонні витрати","Defence spending"),"budget",t("$ млрд","$ billion"))}
       ${kpi(t("Особовий склад","Personnel"),"active",t("тис. активних","thousand active"))}
       ${kpi(t("Ядерні боєголовки","Nuclear warheads"),"nukes",t("шт. (сумарний інвентар)","pcs (total inventory)"))}

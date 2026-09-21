@@ -65,6 +65,28 @@ DATA.byBloc = function(b){ return DATA.countries.filter(c=>c.bloc===b); };
 DATA.sum = function(b,k){ return DATA.byBloc(b).reduce((s,c)=>s+(c[k]||0),0); };
 DATA.country = function(code){ return DATA.countries.find(c=>c.code===code); };
 
+/* Вид одиниці показника: у чому зберігається значення (для «людського» запису великих чисел) */
+DATA.kind = {pop:"mln", gdp:"usdbn", budget:"usdbn", active:"thou", reserve:"thou"};
+
+/* Число зі шкалою словами: 30300 ($ млрд) -> «$30,3 трлн», 1450 (тис.) -> «1,45 млн». Для решти — звичайне число. */
+DATA.fmtVal = function(k, v){
+  const kind = DATA.kind[k];
+  if(!kind) return DATA.fmt(v);
+  if(v===null||v===undefined||isNaN(v)) return "—";
+  const en = (typeof L!=="undefined" && L.lang==="en");
+  const W = en ? {tr:"trillion", bn:"billion", mn:"million", th:"thousand"} : {tr:"трлн", bn:"млрд", mn:"млн", th:"тис."};
+  const f = DATA.fmt;
+  if(kind==="usdbn"){
+    if(v>=1000) return "$"+f(v/1000)+" "+W.tr;
+    if(v>=1)    return "$"+f(v)+" "+W.bn;
+    if(v>0)     return "$"+f(v*1000)+" "+W.mn;
+    return "$0";
+  }
+  if(kind==="mln")  return v>=1000 ? f(v/1000)+" "+W.bn : f(v)+" "+W.mn;
+  if(kind==="thou") return v>=1000 ? f(v/1000)+" "+W.mn : f(v)+" "+W.th;
+  return f(v);
+};
+
 /* Форматування чисел за українською локаллю */
 DATA.fmt = function(n){
   if(n===null||n===undefined||isNaN(n)) return "—";
