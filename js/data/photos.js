@@ -5,11 +5,10 @@
                          url:"https://commons.wikimedia.org/wiki/File:Назва.jpg"}
 */
 /* ТИМЧАСОВО: автор і ліцензія невідомі (позначено ⚠). Замінити на реальні дані ДО публікації. */
-const _TBD = {author:"⚠ автор не вказано", license:"ліцензію треба перевірити"};
 DATA.photos = {
-  "m1a2-sepv3-abrams":   {file:"m1a2-sepv3-abrams.jpg",   ..._TBD},
-  "leopard-2a7-2a8":     {file:"leopard-2a7-2a8.jpg",     ..._TBD},
-  "challenger-3":        {file:"challenger-3.jpg",        ..._TBD},
+  "m1a2-sepv3-abrams":   {file:"m1a2-sepv3-abrams.jpg",},
+  "leopard-2a7-2a8":     {file:"leopard-2a7-2a8.jpg",},
+  "challenger-3":        {file:"challenger-3.jpg",},
   "leclerc-xlr":         {file:"leclerc-xlr.jpg",         ..._TBD},
   "ariete-c1":           {file:"ariete-c1.jpg",           ..._TBD},
   "k2pl-black-panther":  {file:"k2pl-black-panther.jpg",  ..._TBD},
